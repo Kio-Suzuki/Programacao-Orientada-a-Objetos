@@ -9,6 +9,26 @@ public class SmartPhone{
 	private Especificacao spec = new Especificacao();
 
 //================================================================
+
+	public SmartPhone(){
+		marca = "Apple";
+		modelo = "iPhone 14";
+		versao = "Pro Max";
+	}
+
+	public SmartPhone(String marca, String modelo, String versao){
+		this.marca = marca;
+		this.modelo = modelo;
+		this.versao = versao;
+	}
+
+	public SmartPhone(SmartPhone sp){
+		marca = sp.getMarca();
+		modelo = sp.getModelo();
+		versao = sp.getVersao();
+	}
+
+//================================================================
 	
 	public Especificacao getSpec(){
 		return spec;
