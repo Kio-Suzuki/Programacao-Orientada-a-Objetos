@@ -29,3 +29,5 @@ public class Especificacao{
 	public void setMemoria(String memoria){
 		this.memoria = memoria;
 	}
+
+}

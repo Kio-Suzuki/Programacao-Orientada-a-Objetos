@@ -1,4 +1,4 @@
-public class Hardware
+public class Hardware{
 
 //================================================================
 
@@ -21,7 +21,7 @@ public class Hardware
 
 	public Hardware(Hardware hw){
 		categoria = hw.getCategoria();
-		marca = hw.getMarca()/
+		marca = hw.getMarca();
 	}
 	
 //================================================================
@@ -51,4 +51,6 @@ public class Hardware
 	public void setMarca(String marca){
 		this.marca = marca;
 	}
+
+}
 	
