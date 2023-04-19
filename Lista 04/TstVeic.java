@@ -28,7 +28,8 @@ public class TstVeic{
 			p1.setVelocMax(100);
 		}
 
-		p1.setQtdePassageiro(Integer.parseInt(l.entDados("Quantidade de passageiros: ")));	
+		p1.setQtdePassageiro(Integer.parseInt(l.entDados("Quantidade de passageiros: ")));
+		p1.setDataCadastro(l.entDados("Data de Cadastro (dd/mm/aaaa): "));
 
 
 		System.out.println("\nCARRO DE CARGA:");
@@ -51,10 +52,12 @@ public class TstVeic{
 				
 		c1.setTara(Integer.parseInt(l.entDados("Tara: ")));
 		c1.setCargaMax(Integer.parseInt(l.entDados("Carga Maxima: ")));
+		c1.setDataCadastro(l.entDados("Data de Cadastro (dd/mm/aaaa): "));
 
 
 		System.out.println("\n\nVEICULO DE PASSEIO:");
 
+		System.out.println("Data de Cadastro: "+p1.getDataCadastro());
 		System.out.println("Quantidade de Pistoes: "+p1.getMotor().getQtdPistoes());
 		System.out.println("Potencia: "+p1.getMotor().getPotencia());
 		System.out.println("Placa: "+p1.getPlaca()); 
@@ -69,6 +72,7 @@ public class TstVeic{
 
 		System.out.println("\n\nVEICULO DE CARGA:");
 
+		System.out.println("Data de Cadastro: "+c1.getDataCadastro());
 		System.out.println("Quantidade de Pistoes: "+c1.getMotor().getQtdPistoes());
 		System.out.println("Potencia: "+c1.getMotor().getPotencia());
 		System.out.println("Placa: "+c1.getPlaca()); 

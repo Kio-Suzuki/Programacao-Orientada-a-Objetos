@@ -54,6 +54,10 @@ public abstract class Veiculo{
 		return motor;
 	}
 
+	public String getDataCadastro(){
+		return dataCadastro;
+	}
+
 	public final void setPlaca(String placa){
 		this.placa = placa;
 	}
@@ -80,6 +84,10 @@ public abstract class Veiculo{
 
 	public final void setMotor(Motor motor){
 		this.motor = motor;
+	}
+
+	public final void setDataCadastro(String dataCadastro){
+		this.dataCadastro = dataCadastro;
 	}
 
 	public abstract int calcVel();
