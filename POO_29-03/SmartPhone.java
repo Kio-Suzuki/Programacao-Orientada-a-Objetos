@@ -28,6 +28,10 @@ public class SmartPhone{
 		versao = sp.getVersao();
 	}
 
+	public void apresentaSM(){
+		System.out.println("Classe SM");
+	}
+
 //================================================================
 	
 	public Especificacao getSpec(){
