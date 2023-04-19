@@ -14,7 +14,7 @@ public class Especificacao{
 	public void setSo(SistemaOperacional so){
 		this.so = so;
 	}
-	
+
 //================================================================
 
 	public String getCapacidade(){
