@@ -18,7 +18,7 @@ public class Serie{
 		return temporadas;
 	}
 
-	public String getEpisodios(){
+	public Integer getEpisodios(){
 		return episodios;
 	}
 

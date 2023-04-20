@@ -2,7 +2,7 @@ public class Filme{
 
 	private String nome;
 	private String produtora;
-	private Double duracao;
+	private Integer duracao;
 
 	public Filme(){
 		nome = "";
@@ -18,7 +18,7 @@ public class Filme{
 		return produtora;
 	}
 	
-	public Double getDuracao(){
+	public Integer getDuracao(){
 		return duracao;
 	}
 
@@ -30,7 +30,7 @@ public class Filme{
 		this.produtora = produtora;
 	}
 	
-	public void setDuracao(Double duracao){
+	public void setDuracao(Integer duracao){
 		this.duracao = duracao;
 	}
 
