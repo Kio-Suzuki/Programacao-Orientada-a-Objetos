@@ -59,7 +59,7 @@ public class TstVeic{
 
 		System.out.println("Data de Cadastro: "+p1.getDataCadastro());
 		System.out.println("Quantidade de Pistoes: "+p1.getMotor().getQtdPistoes());
-		System.out.println("Potencia: "+p1.getMotor().getPotencia());
+		System.out.println("Potencia: "+p1.getMotor().getPotencia()+" HP");
 		System.out.println("Placa: "+p1.getPlaca()); 
 		System.out.println("Marca: "+p1.getMarca());
 		System.out.println("Modelo: "+p1.getModelo());
@@ -74,7 +74,7 @@ public class TstVeic{
 
 		System.out.println("Data de Cadastro: "+c1.getDataCadastro());
 		System.out.println("Quantidade de Pistoes: "+c1.getMotor().getQtdPistoes());
-		System.out.println("Potencia: "+c1.getMotor().getPotencia());
+		System.out.println("Potencia: "+c1.getMotor().getPotencia()+" HP");
 		System.out.println("Placa: "+c1.getPlaca()); 
 		System.out.println("Marca: "+c1.getMarca());
 		System.out.println("Modelo: "+c1.getModelo());

@@ -1,8 +1,10 @@
+//Nome Allisson Akio Suzuki - RA: 2476495
+
 public class Filme{
 
 	private String nome;
 	private String produtora;
-	private Integer duracao;
+	private int duracao;
 
 	public Filme(){
 		nome = "";
@@ -18,7 +20,7 @@ public class Filme{
 		return produtora;
 	}
 	
-	public Integer getDuracao(){
+	public int getDuracao(){
 		return duracao;
 	}
 
@@ -30,7 +32,7 @@ public class Filme{
 		this.produtora = produtora;
 	}
 	
-	public void setDuracao(Integer duracao){
+	public void setDuracao(int duracao){
 		this.duracao = duracao;
 	}
 

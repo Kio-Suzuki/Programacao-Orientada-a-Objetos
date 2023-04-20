@@ -1,17 +1,24 @@
+//Nome Allisson Akio Suzuki - RA: 2476495
+
 public final class Basico extends Streaming{
 
-	private Integer multitelas;
+	private int multiTelas;
 
 	public Basico(){
-		multitelas = 0;	
+		multiTelas = 0;	
 	}
 
-	public Integer setMultitelas(){
-		return multitelas;
+	public int totalEpisodios(){
+		int t = (getSerie().getEpisodios() * getSerie().getTemporadas());
+		return t;
+	}
+	
+	public int getMultiTelas(){
+		return multiTelas;
 	}
 
-	public final void getMultitelas(Integer multitelas){
-		this.multitelas = multitelas;
+	public final void setMultiTelas(int multiTelas){
+		this.multiTelas = multiTelas;
 	}
 
 }

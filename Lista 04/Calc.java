@@ -2,6 +2,6 @@
 
 public interface Calc{
 
-	//public void calcular();
+	public int calcular();
 
 }

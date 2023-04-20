@@ -1,3 +1,5 @@
+//Nome Allisson Akio Suzuki - RA: 2476495
+
 public final class Plus extends Streaming{
 
 	private String esporte;
@@ -8,20 +10,19 @@ public final class Plus extends Streaming{
 		ligas = "";
 	}
 
-	public String setEsporte(){
+	public String getEsporte(){
 		return esporte;
 	}
 
-	public String setLigas(){
+	public String getLigas(){
 		return ligas;
 	}
 
-	
-	public final void getEsporte(String esporte){
+	public final void setEsporte(String esporte){
 		this.esporte = esporte;
 	}
 
-	public final void getLigas(String ligas){
+	public final void setLigas(String ligas){
 		this.ligas = ligas;
 	}
 

@@ -1,8 +1,10 @@
+//Nome Allisson Akio Suzuki - RA: 2476495
+
 public class Serie{
 
 	private String nome;
-	private Integer temporadas;
-	private Integer episodios;
+	private int temporadas;
+	private int episodios;
 
 	public Serie(){
 		nome = "";
@@ -14,11 +16,11 @@ public class Serie{
 		return nome;
 	}
 	
-	public Integer getTemporadas(){
+	public int getTemporadas(){
 		return temporadas;
 	}
 
-	public Integer getEpisodios(){
+	public int getEpisodios(){
 		return episodios;
 	}
 
@@ -26,11 +28,11 @@ public class Serie{
 		this.nome = nome;
 	}
 	
-	public void setTemporadas(Integer temporadas){
+	public void setTemporadas(int temporadas){
 		this.temporadas = temporadas;
 	}
 
-	public void setEpisodios(Integer episodios){
+	public void setEpisodios(int episodios){
 		this.episodios = episodios;
 	}
 }
