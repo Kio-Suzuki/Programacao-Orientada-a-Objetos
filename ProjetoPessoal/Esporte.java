@@ -2,28 +2,38 @@
 
 public class Esporte extends ConteudoStreaming{
 
-	private String esporte;
 	private String liga;
+	private String custoAdic;
+	private Double custo
 	
 	public Esporte(){
-		esporte = "";
 		liga = "";
+		custoAdic = "";
+		custo 0.0;
 	}
 
-	public String getEsporte(){
-		return esporte;
-	}
-	
 	public String getLiga(){
 		return liga;
 	}
 
-	public void setEsporte(String esporte){
-		this.esporte = esporte;
+	public String getCustoAdic(){
+		return custoAdic;
 	}
 
+	public Double getCusto(){
+		return custo
+	}
+		
 	public void setLiga(String liga){
 		this.liga = liga;
+	}
+
+	public void setCustoAdic(String custoAdic){
+		this.custoAdic = custoAdic;
+	}
+
+	public void setCusto(Double custo)
+		this.custo = custo;
 	}
 	
 }
