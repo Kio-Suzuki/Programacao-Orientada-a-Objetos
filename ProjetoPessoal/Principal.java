@@ -76,7 +76,7 @@ public class Principal{
 					break;
 					
 				case 5:
-					System.out.println("saindo...");
+					System.exit(0);	
 					break;
 
 				default:
@@ -193,6 +193,7 @@ public class Principal{
 	boolean rep = true;
 		String resp = "";
 		String busca = "";
+		int ctrl = 0;
 
 		switch(opc){
 			case 1:
@@ -203,14 +204,19 @@ public class Principal{
 						if(busca.equalsIgnoreCase(listF.get(i).getNome())){
 							listF.remove(listF.get(i));
 							System.out.println("FILME REMOVIDO COM SUCESSO!");
-							resp = l.entDados("\nDESEJA REMOVER MAIS UM FILME? (s/n): "); 
-							if(resp.equalsIgnoreCase("N")){
-								rep = false;
-								menu();
-								break;
-							}
-						}			
+							ctrl++;
+						}
+					}	
+					if(ctrl == 0){
+						System.out.println("FILME NAO ENCONTRADO!");
 					}
+					resp = l.entDados("DESEJA FAZER NOVA BUSCA? (s/n):");
+					if(resp.equalsIgnoreCase("N")){
+						rep = false;
+						menu();
+						break;
+					}	
+
 				}
 				
 			case 2:
@@ -219,21 +225,16 @@ public class Principal{
 					busca = l.entDados("\nTITULO: ");
 					for(int i = 0; i < listS.size(); i++){
 						if(busca.equalsIgnoreCase(listS.get(i).getNome())){
-							System.out.println("==============================================================");
-							System.out.println("NOME: "+listS.get(i).getNome());
-							System.out.println("GENERO: "+listS.get(i).getGenero());
-							System.out.println("TEMPORADAS: "+listS.get(i).getTemporadas());
-							System.out.println("EPISODIOS: "+listS.get(i).getEpisodios());
-							System.out.println("DISPONIVEL EM STREAM: "+listS.get(i).getStream().getNome());
-							System.out.println("==============================================================");
-							resp = l.entDados("\nREALIZAR NOVA BUSCA? (s/n): "); 
-							if(resp.equalsIgnoreCase("N")){
-								rep = false;
-								menu();
-								break;
-							}
-						}			
+							listF.remove(listF.get(i));
+							System.out.println("SERIE REMOVIDA COM SUCESSO!");
+						}
 					}
+					resp = l.entDados("\nDESEJA REMOVER OUTRA SERIE? (s/n): "); 
+						if(resp.equalsIgnoreCase("N")){
+							rep = false;
+							menu();
+							break;
+						}
 				}
 
 			case 3:
@@ -241,44 +242,45 @@ public class Principal{
 				while(rep){
 					busca = l.entDados("\nTITULO: ");
 					for(int i = 0; i < listA.size(); i++){
-						if(busca.equalsIgnoreCase(listA.get(i).getNome())){
-							System.out.println("==============================================================");
-							System.out.println("NOME: "+listA.get(i).getNome());
-							System.out.println("GENERO: "+listA.get(i).getGenero());
-							System.out.println("TEMPORADAS: "+listA.get(i).getTemporadas());
-							System.out.println("EPISODIOS: "+listA.get(i).getEpisodios());
-							System.out.println("DISPONIVEL EM STREAM: "+listA.get(i).getStream().getNome());
-							System.out.println("==============================================================");
-							resp = l.entDados("\nREALIZAR NOVA BUSCA? (s/n): "); 
-							if(resp.equalsIgnoreCase("N")){
-								rep = false;
-								menu();
-								break;
-							}
-						}			
+						if(busca.equalsIgnoreCase(listF.get(i).getNome())){
+							listF.remove(listA.get(i));
+							System.out.println("ANIME REMOVIDO COM SUCESSO!");
+							ctrl++;
+						}
+					}	
+					if(ctrl == 0){
+						System.out.println("FILME NAO ENCONTRADO!");
 					}
+					resp = l.entDados("DESEJA FAZER NOVA BUSCA? (s/n):");
+					if(resp.equalsIgnoreCase("N")){
+						rep = false;
+						menu();
+						break;
+					}	
+
 				}
 
 			case 4:
 
 				while(rep){
-				busca = l.entDados("\nTITULO: ");
-				for(int i = 0; i < listE.size(); i++){
-					if(busca.equalsIgnoreCase(listE.get(i).getNome())){
-						System.out.println("==============================================================");
-						System.out.println("\nNOME: "+listE.get(i).getNome());
-						System.out.println("GENERO: "+listE.get(i).getGenero());
-						System.out.println("LIGA: "+listE.get(i).getLiga());
-						System.out.println("DISPONIVEL EM STREAM: "+listE.get(i).getStream().getNome());
-						System.out.println("==============================================================");
-						resp = l.entDados("\nREALIZAR NOVA BUSCA? (s/n): "); 
-							if(resp.equalsIgnoreCase("N")){
-								rep = false;
-								menu();
-								break;
-							}
-						}			
+					busca = l.entDados("\nTITULO: ");
+					for(int i = 0; i < listE.size(); i++){
+						if(busca.equalsIgnoreCase(listE.get(i).getNome())){
+							listF.remove(listA.get(i));
+							System.out.println("ESPORTE REMOVIDO COM SUCESSO!");
+							ctrl++;
+						}
+					}	
+					if(ctrl == 0){
+						System.out.println("FILME NAO ENCONTRADO!");
 					}
+					resp = l.entDados("DESEJA FAZER NOVA BUSCA? (s/n):");
+					if(resp.equalsIgnoreCase("N")){
+						rep = false;
+						menu();
+						break;
+					}	
+
 				}
 					
 			case 5:
@@ -334,10 +336,6 @@ public class Principal{
 						System.out.println("DURACAO: "+listF.get(i).getDuracao()+" MIN");
 						System.out.println("DISPONIVEL EM: "+listF.get(i).getStream().getNome());
 						System.out.println("==============================================================");
-					}else{
-						System.out.println("==============================================================");
-						System.out.println("CONTEUDO INDISPONIVEL");
-						System.out.println("==============================================================");
 					}
 				}	
 				for(int i = 0; i < listS.size(); i++){
@@ -350,10 +348,6 @@ public class Principal{
 						System.out.println("TOTAL DE EPISODIOS: "+listS.get(i).totalEpi());
 						System.out.println("DISPONIVEL EM: "+listS.get(i).getStream().getNome());
 						System.out.println("==============================================================");
-					}else{
-						System.out.println("==============================================================");
-						System.out.println("CONTEUDO INDISPONIVEL");
-						System.out.println("==============================================================");
 					}
 				}	
 				for(int i = 0; i < listA.size(); i++){
@@ -365,10 +359,6 @@ public class Principal{
 						System.out.println("EPISODIOS: "+listA.get(i).getEpisodios());
 						System.out.println("DISPONIVEL EM: "+listA.get(i).getStream().getNome());
 						System.out.println("==============================================================");
-					}else{
-						System.out.println("==============================================================");
-						System.out.println("CONTEUDO INDISPONIVEL");
-						System.out.println("==============================================================");
 					}
 				}	
 				for(int i = 0; i < listE.size(); i++){
@@ -378,10 +368,6 @@ public class Principal{
 						System.out.println("GENERO: "+listE.get(i).getGenero());
 						System.out.println("LIGA: "+listE.get(i).getLiga());
 						System.out.println("DISPONIVEL EM: "+listE.get(i).getStream().getNome());
-						System.out.println("==============================================================");
-					}else{
-						System.out.println("==============================================================");
-						System.out.println("CONTEUDO INDISPONIVEL");
 						System.out.println("==============================================================");
 					}
 				}
@@ -403,7 +389,11 @@ public class Principal{
 		boolean rep = true;
 		String resp = "";
 		String busca = "";
-
+		int contf = 0;
+		int conts = 0;
+		int conta = 0;
+		int conte = 0;
+		
 			do{
 				busca = l.entDados("\nSTREAM: ");
 				for(int i = 0; i < listF.size(); i++){
@@ -413,12 +403,8 @@ public class Principal{
 						System.out.println("GENERO: "+listF.get(i).getGenero());
 						System.out.println("ESTUDIO: "+listF.get(i).getEstudio());
 						System.out.println("DURACAO: "+listF.get(i).getDuracao()+" MIN");
-						System.out.println("DISPONIVEL EM: "+listF.get(i).getStream().getNome());
 						System.out.println("==============================================================");
-					}else{
-						System.out.println("==============================================================");
-						System.out.println("CONTEUDO INDISPONIVEL");
-						System.out.println("==============================================================");
+						contf++;
 					}
 				}	
 				for(int i = 0; i < listS.size(); i++){
@@ -429,12 +415,8 @@ public class Principal{
 						System.out.println("TEMPORADAS: "+listS.get(i).getTemporadas());
 						System.out.println("EPISODIOS: "+listS.get(i).getEpisodios());
 						System.out.println("TOTAL DE EPISODIOS: "+listS.get(i).totalEpi());
-						System.out.println("DISPONIVEL EM: "+listS.get(i).getStream().getNome());
 						System.out.println("==============================================================");
-					}else{
-						System.out.println("==============================================================");
-						System.out.println("CONTEUDO INDISPONIVEL");
-						System.out.println("==============================================================");
+						conts++;
 					}
 				}	
 				for(int i = 0; i < listA.size(); i++){
@@ -444,12 +426,8 @@ public class Principal{
 						System.out.println("GENERO: "+listA.get(i).getGenero());
 						System.out.println("TEMPORADAS: "+listA.get(i).getTemporadas());
 						System.out.println("EPISODIOS: "+listA.get(i).getEpisodios());
-						System.out.println("DISPONIVEL EM: "+listA.get(i).getStream().getNome());
 						System.out.println("==============================================================");
-					}else{
-						System.out.println("==============================================================");
-						System.out.println("CONTEUDO INDISPONIVEL");
-						System.out.println("==============================================================");
+						conta++;
 					}
 				}	
 				for(int i = 0; i < listE.size(); i++){
@@ -458,15 +436,22 @@ public class Principal{
 						System.out.println("\nNOME: "+listE.get(i).getNome());
 						System.out.println("GENERO: "+listE.get(i).getGenero());
 						System.out.println("LIGA: "+listE.get(i).getLiga());
-						System.out.println("DISPONIVEL EM: "+listE.get(i).getStream().getNome());
 						System.out.println("==============================================================");
-					}else{
-						System.out.println("==============================================================");
-						System.out.println("CONTEUDO INDISPONIVEL");
-						System.out.println("==============================================================");
+						conte++;
 					}
 				}
-	
+				if(contf == 0 && conts == 0 && conta == 0 && conte == 0){
+					System.out.println("==============================================================");
+					System.out.println("CONTEUDO INDISPONIVEL");
+					System.out.println("==============================================================");
+				}
+		 
+				System.out.println("QUANTIDADE DE FILMES DISPONIVEIS: "+contf);
+				System.out.println("QUANTIDADE DE SERIES DISPONIVEIS: "+conts);
+				System.out.println("QUANTIDADE DE ANIMES DISPONIVEIS: "+conta);
+				System.out.println("QUANTIDADE DE ESPORTES DISPONIVEIS: "+conta);
+				System.out.println("==============================================================");
+
 				resp = l.entDados("\nREALIZAR NOVA BUSCA? (s/n): "); 
 				if(resp.equalsIgnoreCase("N")){
 					rep = false;
