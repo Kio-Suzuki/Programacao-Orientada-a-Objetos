@@ -1,11 +1,11 @@
 //Nome Allisson Akio Suzuki - RA: 2476495
 
-public class Serie extends ConteudoStreaming{
+public class Anime extends ConteudoStreaming{
 
 	private int temporadas;
 	private int episodios;
 
-	public Serie(){
+	public Anime(){
 		temporadas = 0;
 		episodios = 0;
 	}
@@ -26,7 +26,7 @@ public class Serie extends ConteudoStreaming{
 		this.episodios = episodios;
 	}
 
-	public int totalEpi(){
+	private int totalEpi(int temporadas, int episodios){
 		int total = (getTemporadas()*getEpisodios());
 		return total;
 	} 

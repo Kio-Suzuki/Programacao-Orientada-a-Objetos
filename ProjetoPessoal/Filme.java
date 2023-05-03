@@ -1,35 +1,25 @@
 //Nome Allisson Akio Suzuki - RA: 2476495
 
-public class Filme{
+public class Filme extends ConteudoStreaming{
 
-	private String nome;
-	private String produtora;
+	private String estudio;
 	private int duracao;
 
 	public Filme(){
-		nome = "";
-		produtora = "";
+		estudio = "";
 		duracao = 0;
 	}
 
-	public String getNome(){
-		return nome;
-	}
-
-	public String getProdutora(){
-		return produtora;
+	public String getEstudio(){
+		return estudio;
 	}
 	
 	public int getDuracao(){
 		return duracao;
 	}
 
-	public void setNome(String nome){
-		this.nome = nome;
-	}
-
-	public void setProdutora(String produtora){
-		this.produtora = produtora;
+	public void setEstudio(String estudio){
+		this.estudio = estudio;
 	}
 	
 	public void setDuracao(int duracao){

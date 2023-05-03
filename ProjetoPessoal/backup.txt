@@ -1,15 +1,4 @@
-//Nome Allisson Akio Suzuki - RA: 2476495
-
-public class TstStream{
-
-	private static Basico b1 = new Basico();
-	private static Plus p1 = new Plus();
-
-	private static Leitura l = new Leitura();
-
-	public static void main(String arg[]){
-
-		System.out.println("\nSTREAMING BASICO:");
+System.out.println("\nSTREAMING BASICO:");
 
 		b1.setNome(l.entDados("Nome: "));
 		b1.setAssinaturaBasica(Double.parseDouble(l.entDados("Preco da assinatura basica: ")));
@@ -66,10 +55,3 @@ public class TstStream{
 		System.out.println("\nESPORTES: ");
 		System.out.println("ESPORTE: "+p1.getEsporte());
 		System.out.println("LIGA: "+p1.getLigas());
-
-	}
-	
-}
-	
-
-		
