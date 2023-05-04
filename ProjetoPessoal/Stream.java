@@ -3,22 +3,22 @@
 public final class Stream{
 
 	private String nome;
-	private Double precoMedio;
+	private Double preco;
 
 	public String getNome(){
 		return nome;
 	}
 
-	public Double getPrecoMedio(){
-		return precoMedio;
+	public Double getPreco(){
+		return preco;
 	}
 
 	public final void setNome(String nome){
 		this.nome = nome;
 	}
 
-	public final void setPrecoMedio(Double precoMedio){
-		this.precoMedio = precoMedio;
+	public final void setPreco(Double preco){
+		this.preco = preco;
 	}
 
 }

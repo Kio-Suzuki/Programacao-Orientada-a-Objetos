@@ -2,6 +2,7 @@
 
 import java.util.List;
 import java.util.ArrayList;
+import java.io.IOException;
 
 public class Principal{
 
@@ -24,7 +25,7 @@ public class Principal{
 
 	}
 	
-//==========================================================================//
+//============================================================================================//
 
 	public static void menu(){
 
@@ -38,7 +39,6 @@ public class Principal{
 			System.out.println("4 - BUSCAR STREAMS");
 			System.out.println("5 - SAIR");
 			opc = (Integer.parseInt(l.entDados("Opcao: ")));
-
 
 			switch(opc){
 				case 1:
@@ -66,8 +66,9 @@ public class Principal{
 				case 3:
 					System.out.println("\nBUSCAR POR");
 					System.out.println("1 - TITULO");
-					System.out.println("2 - STREAM");
-					System.out.println("3 - VOLTAR");
+					System.out.println("2 - GENERO");
+					System.out.println("3 - STREAM");
+					System.out.println("4 - VOLTAR");
 					opc = (Integer.parseInt(l.entDados("Opcao: ")));
 					menuBuscar(opc);
 
@@ -88,7 +89,7 @@ public class Principal{
 		}while(opc != 5);
 	}
 
-//==========================================================================//
+//============================================================================================//
 
 	public static void menuAdicionar(int opc){
 
@@ -97,15 +98,23 @@ public class Principal{
 
 		switch(opc){
 			case 1:
-				
 				while(rep){
-			
 					f1 = new Filme();
 					System.out.println("\nFILME:");
 					f1.setNome(l.entDados("NOME: "));
 					f1.setGenero(l.entDados("GENERO: "));
 					f1.setEstudio(l.entDados("ESTUDIO: "));
-					f1.setDuracao(Integer.parseInt(l.entDados("DURACAO DO FILME (MIN): ")));
+					try{
+						f1.setDuracao(Integer.parseInt(l.entDados("DURACAO DO FILME (MIN): ")));
+					}
+					catch(ExceptionInt d){
+						d.exceptionMsgD();
+						f1 = d.dur(f1);	
+					}
+					catch(NumberFormatException nfe){
+						System.out.println("\nDEVE RECEBER UM NUMERO");
+					}
+
 					f1.getStream().setNome(l.entDados("STREAM: "));
 					listF.add(f1);
 					resp = l.entDados("ADICIONAR MAIS UM FILME? (s/n): "); 
@@ -117,15 +126,33 @@ public class Principal{
 				}			
 				
 			case 2:
-
 				while(rep){
-
 					s1 = new Serie();
 					System.out.println("\nSERIE:");
 					s1.setNome(l.entDados("NOME: "));
 					s1.setGenero(l.entDados("GENERO: "));
-					s1.setTemporadas(Integer.parseInt(l.entDados("NUMERO DE TEMPORADAS: ")));
-					s1.setEpisodios(Integer.parseInt(l.entDados("NUMERO DE EPISODIOS: ")));
+					try{
+						s1.setTemporadas(Integer.parseInt(l.entDados("NUMERO DE TEMPORADAS: ")));
+					}
+					catch(ExceptionInt t){
+						t.exceptionMsgT();
+						s1 = t.temp(s1);	
+					}
+					catch(NumberFormatException nfe){
+						System.out.println("\nDEVE RECEBER UM NUMERO");
+					}
+					
+					try{
+						s1.setEpisodios(Integer.parseInt(l.entDados("NUMERO DE EPISODIOS: ")));
+					}
+					catch(ExceptionInt e){
+						e.exceptionMsgE();	
+						s1 = e.epi(s1);
+					}
+					catch(NumberFormatException nfe){
+						System.out.println("\nDEVE RECEBER UM NUMERO");
+					}
+
 					s1.getStream().setNome(l.entDados("STREAM: "));
 					listS.add(s1);
 					resp = l.entDados("ADICIONAR MAIS UMA SERIE? (s/n): "); 
@@ -137,15 +164,31 @@ public class Principal{
 				}			
 
 			case 3:
-
 				while(rep){
-
 					a1 = new Anime();
 					System.out.println("\nANIME:");
 					a1.setNome(l.entDados("NOME: "));
 					a1.setGenero(l.entDados("GENERO: "));
-					a1.setTemporadas(Integer.parseInt(l.entDados("NUMERO DE TEMPORADAS: ")));
-					a1.setEpisodios(Integer.parseInt(l.entDados("NUMERO DE EPISODIOS: ")));
+					try{
+						a1.setTemporadas(Integer.parseInt(l.entDados("NUMERO DE TEMPORADAS: ")));
+					}
+					catch(ExceptionInt t){
+						t.exceptionMsgT();	
+					}
+					catch(NumberFormatException nfe){
+						System.out.println("\nDEVE RECEBER UM NUMERO");
+					}
+
+					try{
+						a1.setEpisodios(Integer.parseInt(l.entDados("NUMERO DE EPISODIOS: ")));
+					}
+					catch(ExceptionInt e){
+						e.exceptionMsgE();	
+					}
+					catch(NumberFormatException nfe){
+						System.out.println("\nDEVE RECEBER UM NUMERO");
+					}
+
 					a1.getStream().setNome(l.entDados("STREAM: "));
 					listA.add(a1);
 					resp = l.entDados("ADICIONAR MAIS UM ANIME? (s/n): "); 
@@ -157,14 +200,15 @@ public class Principal{
 				}			
 
 			case 4:
-
 				while(rep){
 					e1 = new Esporte();
 					System.out.println("\nESPORTE:");
 					e1.setNome(l.entDados("NOME: "));
 					e1.setGenero(l.entDados("GENERO: "));
-					e1.setEsporte(l.entDados("ESPORTE: "));
 					e1.setLiga(l.entDados("LIGA: "));
+					e1.setCustoAdic(l.entDados("CUSTO ADICIONAL (s/n): "));
+					if(e1.getCustoAdic().equalsIgnoreCase("S"))
+						e1.setCusto(Double.parseDouble(l.entDados("VALOR: ")));
 					e1.getStream().setNome(l.entDados("STREAM: "));
 					listE.add(e1);
 					resp = l.entDados("ADICIONAR MAIS UM ESPORTE? (s/n): "); 
@@ -186,7 +230,7 @@ public class Principal{
 		}
 	}
 
-//==========================================================================//
+//============================================================================================//
 
 	public static void menuRemover(int opc){
 		
@@ -197,7 +241,6 @@ public class Principal{
 
 		switch(opc){
 			case 1:
-
 				while(rep){
 					busca = l.entDados("\nTITULO: ");
 					for(int i = 0; i < listF.size(); i++){
@@ -210,7 +253,7 @@ public class Principal{
 					if(ctrl == 0){
 						System.out.println("FILME NAO ENCONTRADO!");
 					}
-					resp = l.entDados("DESEJA FAZER NOVA BUSCA? (s/n):");
+					resp = l.entDados("DESEJA REMOVER OUTRO FILME? (s/n):");
 					if(resp.equalsIgnoreCase("N")){
 						rep = false;
 						menu();
@@ -220,7 +263,6 @@ public class Principal{
 				}
 				
 			case 2:
-
 				while(rep){
 					busca = l.entDados("\nTITULO: ");
 					for(int i = 0; i < listS.size(); i++){
@@ -238,7 +280,6 @@ public class Principal{
 				}
 
 			case 3:
-
 				while(rep){
 					busca = l.entDados("\nTITULO: ");
 					for(int i = 0; i < listA.size(); i++){
@@ -251,7 +292,7 @@ public class Principal{
 					if(ctrl == 0){
 						System.out.println("FILME NAO ENCONTRADO!");
 					}
-					resp = l.entDados("DESEJA FAZER NOVA BUSCA? (s/n):");
+					resp = l.entDados("DESEJA REMOVER OUTRO ANIME? (s/n):");
 					if(resp.equalsIgnoreCase("N")){
 						rep = false;
 						menu();
@@ -261,7 +302,6 @@ public class Principal{
 				}
 
 			case 4:
-
 				while(rep){
 					busca = l.entDados("\nTITULO: ");
 					for(int i = 0; i < listE.size(); i++){
@@ -274,7 +314,7 @@ public class Principal{
 					if(ctrl == 0){
 						System.out.println("FILME NAO ENCONTRADO!");
 					}
-					resp = l.entDados("DESEJA FAZER NOVA BUSCA? (s/n):");
+					resp = l.entDados("DESEJA REMOVER OUTRO ESPORTE? (s/n):");
 					if(resp.equalsIgnoreCase("N")){
 						rep = false;
 						menu();
@@ -284,31 +324,6 @@ public class Principal{
 				}
 					
 			case 5:
-				break;
-
-			default:
-				System.out.println("OPCAO INVALIDA, ESCOLHA NOVAMENTE");
-				opc = (Integer.parseInt(l.entDados("Opcao: ")));	
-				break;
-		}
-	}
-
-//==========================================================================//
-
-	public static void menuBuscar(int opc){
-
-		switch(opc){
-			case 1:
-
-				buscarTitulo();
-				break;
-				
-			case 2:
-
-				buscarStream();
-				break;
-								
-			case 3:
 				menu();
 				break;
 
@@ -319,70 +334,199 @@ public class Principal{
 		}
 	}
 
+//============================================================================================//
+
+	public static void menuBuscar(int opc){
+
+		switch(opc){
+			case 1:
+				buscarTitulo();
+				break;
+				
+			case 2:
+				buscarGenero();
+				break;
+					
+			case 3:
+				buscarStream();
+				break;
+			
+			case 4:
+				menu();
+				break;
+
+			default:
+				System.out.println("OPCAO INVALIDA, ESCOLHA NOVAMENTE");
+				opc = (Integer.parseInt(l.entDados("Opcao: ")));	
+				break;
+		}
+	}
+
+//============================================================================================//
+
 	public static void buscarTitulo(){
 
 		boolean rep = true;
 		String resp = "";
 		String busca = "";
+		int contf = 0;
+		int conts = 0;
+		int conta = 0;
+		int conte = 0;
 
 			do{
 				busca = l.entDados("\nTITULO: ");
 				for(int i = 0; i < listF.size(); i++){
 					if(busca.equalsIgnoreCase(listF.get(i).getNome())){
-						System.out.println("==============================================================");
-						System.out.println("NOME: "+listF.get(i).getNome());
-						System.out.println("GENERO: "+listF.get(i).getGenero());
-						System.out.println("ESTUDIO: "+listF.get(i).getEstudio());
-						System.out.println("DURACAO: "+listF.get(i).getDuracao()+" MIN");
-						System.out.println("DISPONIVEL EM: "+listF.get(i).getStream().getNome());
-						System.out.println("==============================================================");
+						System.out.println("=====================================================");
+						System.out.println("\t\tNOME: "+listF.get(i).getNome());
+						System.out.println("\t\tGENERO: "+listF.get(i).getGenero());
+						System.out.println("\t\tESTUDIO: "+listF.get(i).getEstudio());
+						System.out.println("\t\tDURACAO: "+listF.get(i).getDuracao()+" MIN");
+						System.out.println("\t\tDISPONIVEL EM: "+listF.get(i).getStream().getNome());
+						System.out.println("=====================================================");
+						contf++;
 					}
 				}	
 				for(int i = 0; i < listS.size(); i++){
 					if(busca.equalsIgnoreCase(listS.get(i).getNome())){
 						System.out.println("==============================================================");
-						System.out.println("NOME: "+listS.get(i).getNome());
-						System.out.println("GENERO: "+listS.get(i).getGenero());
-						System.out.println("TEMPORADAS: "+listS.get(i).getTemporadas());
-						System.out.println("EPISODIOS: "+listS.get(i).getEpisodios());
-						System.out.println("TOTAL DE EPISODIOS: "+listS.get(i).totalEpi());
-						System.out.println("DISPONIVEL EM: "+listS.get(i).getStream().getNome());
+						System.out.println("\t\tNOME: "+listS.get(i).getNome());
+						System.out.println("\t\tGENERO: "+listS.get(i).getGenero());
+						System.out.println("\t\tTEMPORADAS: "+listS.get(i).getTemporadas());
+						System.out.println("\t\tEPISODIOS: "+listS.get(i).getEpisodios());
+						System.out.println("\t\tTOTAL DE EPISODIOS: "+listS.get(i).totalEpi());
+						System.out.println("\t\tDISPONIVEL EM: "+listS.get(i).getStream().getNome());
 						System.out.println("==============================================================");
+						conts++;
 					}
 				}	
 				for(int i = 0; i < listA.size(); i++){
 					if(busca.equalsIgnoreCase(listA.get(i).getNome())){
 						System.out.println("==============================================================");
-						System.out.println("NOME: "+listA.get(i).getNome());
-						System.out.println("GENERO: "+listA.get(i).getGenero());
-						System.out.println("TEMPORADAS: "+listA.get(i).getTemporadas());
-						System.out.println("EPISODIOS: "+listA.get(i).getEpisodios());
-						System.out.println("DISPONIVEL EM: "+listA.get(i).getStream().getNome());
+						System.out.println("\t\tNOME: "+listA.get(i).getNome());
+						System.out.println("\t\tGENERO: "+listA.get(i).getGenero());
+						System.out.println("\t\tTEMPORADAS: "+listA.get(i).getTemporadas());
+						System.out.println("\t\tEPISODIOS: "+listA.get(i).getEpisodios());
+						System.out.println("\t\tDISPONIVEL EM: "+listA.get(i).getStream().getNome());
 						System.out.println("==============================================================");
+						conta++;
 					}
 				}	
 				for(int i = 0; i < listE.size(); i++){
 					if(busca.equalsIgnoreCase(listE.get(i).getNome())){
 						System.out.println("==============================================================");
-						System.out.println("\nNOME: "+listE.get(i).getNome());
-						System.out.println("GENERO: "+listE.get(i).getGenero());
-						System.out.println("LIGA: "+listE.get(i).getLiga());
-						System.out.println("DISPONIVEL EM: "+listE.get(i).getStream().getNome());
+						System.out.println("\t\tNOME: "+listE.get(i).getNome());
+						System.out.println("\t\tGENERO: "+listE.get(i).getGenero());
+						System.out.println("\t\tLIGA: "+listE.get(i).getLiga());
+						System.out.println("\t\tDISPONIVEL EM: "+listE.get(i).getStream().getNome());
 						System.out.println("==============================================================");
+						conts++;
 					}
 				}
+
+				if(contf == 0 && conts == 0 && conta == 0 && conte == 0){
+					System.out.println("==============================================================");
+					System.out.println("\t\tCONTEUDO INDISPONIVEL");
+					System.out.println("==============================================================");
+				}
 	
+				contf = 0;
+				conts = 0;
+				conta = 0;
+				conte = 0;
+
 				resp = l.entDados("\nREALIZAR NOVA BUSCA? (s/n): "); 
 				if(resp.equalsIgnoreCase("N")){
 					rep = false;
-						menu();
-						break;
-				}
-							
+					menu();
+					break;
+				}	
 			}while(rep);	
 
 	}
 	
+//============================================================================================//
+
+	public static void buscarGenero(){
+
+		boolean rep = true;
+		String resp = "";
+		String busca = "";
+		int contf = 0;
+		int conts = 0;
+		int conta = 0;
+		int conte = 0;
+
+			do{
+				busca = l.entDados("\nGENERO: ");
+				for(int i = 0; i < listF.size(); i++){
+					if(busca.equalsIgnoreCase(listF.get(i).getGenero())){
+						System.out.println("=====================================================");
+						System.out.println("\t\tNOME: "+listF.get(i).getNome());
+						System.out.println("\t\tESTUDIO: "+listF.get(i).getEstudio());
+						System.out.println("\t\tDURACAO: "+listF.get(i).getDuracao()+" MIN");
+						System.out.println("\t\tDISPONIVEL EM: "+listF.get(i).getStream().getNome());
+						System.out.println("=====================================================");
+						contf++;
+					}
+				}	
+				for(int i = 0; i < listS.size(); i++){
+					if(busca.equalsIgnoreCase(listS.get(i).getGenero())){
+						System.out.println("=====================================================");
+						System.out.println("\t\tNOME: "+listS.get(i).getNome());
+						System.out.println("\t\tTEMPORADAS: "+listS.get(i).getTemporadas());
+						System.out.println("\t\tEPISODIOS: "+listS.get(i).getEpisodios());
+						System.out.println("\t\tTOTAL DE EPISODIOS: "+listS.get(i).totalEpi());
+						System.out.println("\t\tDISPONIVEL EM: "+listS.get(i).getStream().getNome());
+						System.out.println("=====================================================");
+						conts++;
+					}
+				}	
+				for(int i = 0; i < listA.size(); i++){
+					if(busca.equalsIgnoreCase(listA.get(i).getGenero())){
+						System.out.println("=====================================================");
+						System.out.println("\t\tNOME: "+listA.get(i).getNome());
+						System.out.println("\t\tTEMPORADAS: "+listA.get(i).getTemporadas());
+						System.out.println("\t\tEPISODIOS: "+listA.get(i).getEpisodios());
+						System.out.println("\t\tDISPONIVEL EM: "+listA.get(i).getStream().getNome());
+						System.out.println("=====================================================");
+						conta++;
+					}
+				}	
+				for(int i = 0; i < listE.size(); i++){
+					if(busca.equalsIgnoreCase(listE.get(i).getGenero())){
+						System.out.println("=====================================================");
+						System.out.println("\t\tNOME: "+listE.get(i).getNome());
+						System.out.println("\t\tLIGA: "+listE.get(i).getLiga());
+						System.out.println("\t\tCUSTO ADICIONAL: R$ "+listE.get(i).getCusto());
+						System.out.println("=====================================================");
+						conte++;
+					}
+				}
+
+				if(contf == 0 && conts == 0 && conta == 0 && conte == 0){
+					System.out.println("=====================================================");
+					System.out.println("\t\tCONTEUDO INDISPONIVEL");
+					System.out.println("=====================================================");
+				}
+	
+				contf = 0;
+				conts = 0;
+				conta = 0;
+				conte = 0;
+
+				resp = l.entDados("\nREALIZAR NOVA BUSCA? (s/n): "); 
+				if(resp.equalsIgnoreCase("N")){
+					rep = false;
+					menu();
+					break;
+				}	
+			}while(rep);	
+
+	}
+	
+//============================================================================================//
 
 	public static void buscarStream(){
 		
@@ -398,67 +542,72 @@ public class Principal{
 				busca = l.entDados("\nSTREAM: ");
 				for(int i = 0; i < listF.size(); i++){
 					if(busca.equalsIgnoreCase(listF.get(i).getStream().getNome())){
-						System.out.println("==============================================================");
-						System.out.println("NOME: "+listF.get(i).getNome());
-						System.out.println("GENERO: "+listF.get(i).getGenero());
-						System.out.println("ESTUDIO: "+listF.get(i).getEstudio());
-						System.out.println("DURACAO: "+listF.get(i).getDuracao()+" MIN");
-						System.out.println("==============================================================");
+						System.out.println("=====================================================");
+						System.out.println("\t\tNOME: "+listF.get(i).getNome());
+						System.out.println("\t\tGENERO: "+listF.get(i).getGenero());
+						System.out.println("\t\tESTUDIO: "+listF.get(i).getEstudio());
+						System.out.println("\t\tDURACAO: "+listF.get(i).getDuracao()+" MIN");
+						System.out.println("=====================================================");
 						contf++;
 					}
 				}	
 				for(int i = 0; i < listS.size(); i++){
 					if(busca.equalsIgnoreCase(listS.get(i).getStream().getNome())){
-						System.out.println("==============================================================");
-						System.out.println("NOME: "+listS.get(i).getNome());
-						System.out.println("GENERO: "+listS.get(i).getGenero());
-						System.out.println("TEMPORADAS: "+listS.get(i).getTemporadas());
-						System.out.println("EPISODIOS: "+listS.get(i).getEpisodios());
-						System.out.println("TOTAL DE EPISODIOS: "+listS.get(i).totalEpi());
-						System.out.println("==============================================================");
+						System.out.println("=====================================================");
+						System.out.println("\t\tNOME: "+listS.get(i).getNome());
+						System.out.println("\t\tGENERO: "+listS.get(i).getGenero());
+						System.out.println("\t\tTEMPORADAS: "+listS.get(i).getTemporadas());
+						System.out.println("\t\tEPISODIOS: "+listS.get(i).getEpisodios());
+						System.out.println("\t\tTOTAL DE EPISODIOS: "+listS.get(i).totalEpi());
+						System.out.println("=====================================================");
 						conts++;
 					}
 				}	
 				for(int i = 0; i < listA.size(); i++){
 					if(busca.equalsIgnoreCase(listA.get(i).getStream().getNome())){
-						System.out.println("==============================================================");
-						System.out.println("NOME: "+listA.get(i).getNome());
-						System.out.println("GENERO: "+listA.get(i).getGenero());
-						System.out.println("TEMPORADAS: "+listA.get(i).getTemporadas());
-						System.out.println("EPISODIOS: "+listA.get(i).getEpisodios());
-						System.out.println("==============================================================");
+						System.out.println("=====================================================");
+						System.out.println("\t\tNOME: "+listA.get(i).getNome());
+						System.out.println("\t\tGENERO: "+listA.get(i).getGenero());
+						System.out.println("\t\tTEMPORADAS: "+listA.get(i).getTemporadas());
+						System.out.println("\t\tEPISODIOS: "+listA.get(i).getEpisodios());
+						System.out.println("=====================================================");
 						conta++;
 					}
 				}	
 				for(int i = 0; i < listE.size(); i++){
 					if(busca.equalsIgnoreCase(listE.get(i).getStream().getNome())){
-						System.out.println("==============================================================");
-						System.out.println("\nNOME: "+listE.get(i).getNome());
-						System.out.println("GENERO: "+listE.get(i).getGenero());
-						System.out.println("LIGA: "+listE.get(i).getLiga());
-						System.out.println("==============================================================");
+						System.out.println("=====================================================");
+						System.out.println("\t\tNOME: "+listE.get(i).getNome());
+						System.out.println("\t\tGENERO: "+listE.get(i).getGenero());
+						System.out.println("\t\tLIGA: "+listE.get(i).getLiga());
+						System.out.println("\t\tCUSTO ADICIONAL: R$ "+listE.get(i).getCusto());
+						System.out.println("=====================================================");
 						conte++;
 					}
 				}
 				if(contf == 0 && conts == 0 && conta == 0 && conte == 0){
-					System.out.println("==============================================================");
-					System.out.println("CONTEUDO INDISPONIVEL");
-					System.out.println("==============================================================");
+					System.out.println("=====================================================");
+					System.out.println("\t\tCONTEUDO INDISPONIVEL");
+					System.out.println("=====================================================");
 				}
 		 
-				System.out.println("QUANTIDADE DE FILMES DISPONIVEIS: "+contf);
-				System.out.println("QUANTIDADE DE SERIES DISPONIVEIS: "+conts);
-				System.out.println("QUANTIDADE DE ANIMES DISPONIVEIS: "+conta);
-				System.out.println("QUANTIDADE DE ESPORTES DISPONIVEIS: "+conta);
-				System.out.println("==============================================================");
+				System.out.println("\tQUANTIDADE DE FILMES DISPONIVEIS: "+contf);
+				System.out.println("\tQUANTIDADE DE SERIES DISPONIVEIS: "+conts);
+				System.out.println("\tQUANTIDADE DE ANIMES DISPONIVEIS: "+conta);
+				System.out.println("\tQUANTIDADE DE ESPORTES DISPONIVEIS: "+conte);
+				System.out.println("=====================================================");
+
+				contf = 0;
+				conts = 0;
+				conta = 0;
+				conte = 0;
 
 				resp = l.entDados("\nREALIZAR NOVA BUSCA? (s/n): "); 
 				if(resp.equalsIgnoreCase("N")){
 					rep = false;
-						menu();
-						break;
-				}
-							
+					menu();
+					break;
+				}					
 			}while(rep);	
 
 	}

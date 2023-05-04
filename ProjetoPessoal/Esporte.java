@@ -4,12 +4,12 @@ public class Esporte extends ConteudoStreaming{
 
 	private String liga;
 	private String custoAdic;
-	private Double custo
+	private Double custo;
 	
 	public Esporte(){
 		liga = "";
 		custoAdic = "";
-		custo 0.0;
+		custo = 0.0;
 	}
 
 	public String getLiga(){
@@ -21,7 +21,7 @@ public class Esporte extends ConteudoStreaming{
 	}
 
 	public Double getCusto(){
-		return custo
+		return custo;
 	}
 		
 	public void setLiga(String liga){
@@ -32,7 +32,7 @@ public class Esporte extends ConteudoStreaming{
 		this.custoAdic = custoAdic;
 	}
 
-	public void setCusto(Double custo)
+	public void setCusto(Double custo){
 		this.custo = custo;
 	}
 	

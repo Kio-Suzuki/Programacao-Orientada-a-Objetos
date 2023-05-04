@@ -22,8 +22,13 @@ public class Filme extends ConteudoStreaming{
 		this.estudio = estudio;
 	}
 	
-	public void setDuracao(int duracao){
-		this.duracao = duracao;
+	public void setDuracao(int duracao) throws ExceptionInt{
+		
+		if(duracao > 0){
+			this.duracao = duracao;
+		}else{
+			throw new ExceptionInt();
+		}
 	}
 
 }
