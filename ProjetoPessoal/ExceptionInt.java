@@ -22,6 +22,20 @@ public class ExceptionInt extends Exception{
 		return s1;
 	}
 
+	public Anime epi(Anime a1){
+		try{
+			a1.setEpisodios(Integer.parseInt(l.entDados("NUMERO DE EPISODIOS: ")));
+		}
+		catch(ExceptionInt e){
+			e.exceptionMsgE();	
+			a1 = e.epi(a1);
+		}
+		catch(NumberFormatException nfe){
+			System.out.println("\nDEVE RECEBER UM NUMERO");
+		}
+		return a1;
+	}	
+
 	public void exceptionMsgT(){
 		System.out.println("\nO NUMERO DE TEMPORADAS DEVE SER MAIOR QUE 0 E MENOR QUE 50");
 	}
@@ -38,6 +52,20 @@ public class ExceptionInt extends Exception{
 			System.out.println("\nDEVE RECEBER UM NUMERO");
 		}
 		return s1;
+	}
+
+	public Anime temp(Anime a1){
+		try{
+			a1.setTemporadas(Integer.parseInt(l.entDados("NUMERO DE TEMPORADAS: ")));
+		}
+		catch(ExceptionInt t){
+			t.exceptionMsgT();	
+			a1 = t.temp(a1);
+		}
+		catch(NumberFormatException nfe){
+			System.out.println("\nDEVE RECEBER UM NUMERO");
+		}
+		return a1;
 	}
 
 	public void exceptionMsgD(){
@@ -57,8 +85,5 @@ public class ExceptionInt extends Exception{
 		}
 		return f1;
 	}
-
-
-
 
 }

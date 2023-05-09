@@ -3,22 +3,22 @@
 public final class Stream{
 
 	private String nome;
-	private Double preco;
+
+//polimorfismo por sobrecarga
+	
+	public Stream(){
+	}
+
+	public Stream(String nome){
+		this.nome = nome;
+	}
 
 	public String getNome(){
 		return nome;
 	}
 
-	public Double getPreco(){
-		return preco;
-	}
-
 	public final void setNome(String nome){
 		this.nome = nome;
-	}
-
-	public final void setPreco(Double preco){
-		this.preco = preco;
 	}
 
 }

@@ -13,6 +13,12 @@ public abstract class ConteudoStreaming{
 		stream = new Stream();
 	}
 
+//polimorfismo com sobrescrita
+
+	public String apresentaStream(){
+		return "\t\tCONTEUDO DISPONIVEL EM: ";
+	}
+		
 	public String getNome(){
 		return nome;
 	}

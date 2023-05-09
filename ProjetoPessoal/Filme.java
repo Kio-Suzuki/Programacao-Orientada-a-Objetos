@@ -5,9 +5,22 @@ public class Filme extends ConteudoStreaming{
 	private String estudio;
 	private int duracao;
 
+//polimorfismo com sobrecarga
+
 	public Filme(){
 		estudio = "";
 		duracao = 0;
+	}
+
+	public Filme(String estudio, int duracao){
+		this.estudio = estudio;
+		this.duracao = duracao;
+	}
+
+//polimorfismo com sobrescrita
+
+	public String apresentaStream(){
+		return "\t\tDISPONIVEL EM: ";
 	}
 
 	public String getEstudio(){
@@ -29,6 +42,10 @@ public class Filme extends ConteudoStreaming{
 		}else{
 			throw new ExceptionInt();
 		}
+	}
+
+	public String toString(){
+		return "\t\tNOME: "+getNome()+"\n\t\tGENERO: "+getGenero()+"\n\t\tESTUDIO: "+getEstudio()+"\n\t\tDURACAO: "+getDuracao()+" MIN"+"\n"+apresentaStream()+getStream().getNome();
 	}
 
 }

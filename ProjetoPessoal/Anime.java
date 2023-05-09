@@ -29,7 +29,7 @@ public class Anime extends ConteudoStreaming implements TotalEpi{
 
 	public void setEpisodios(int episodios) throws ExceptionInt{
 		
-		if(temporadas > 0 && temporadas < 50){
+		if(episodios > 0 && episodios < 100){
 			this.episodios = episodios;
 		}else{
 			throw new ExceptionInt();
